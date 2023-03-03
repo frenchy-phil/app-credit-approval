@@ -15,7 +15,7 @@ listid=data['SK_ID_CURR'].tolist()
 valid_x=pd.read_csv('valid_x2.csv')
 
 def score(id):
-    response = requests.post('http://localhost:6000/predict', json={'text': id})
+    response = requests.post('https://frenchy-phil-projet7-essaisite-4w405r.streamlit.app/predict', json={'text': id})
     score = response.json()
     return score
 
@@ -28,7 +28,7 @@ id_input = st.selectbox("Choisissez l'identifiant d'un client", data.SK_ID_CURR)
 result=score(id_input)
 st.metric(label= 'probabilite de remboursement', value=1-result[0])
 
-response_shapley = requests.post('http://localhost:6000/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
+response_shapley = requests.post('https://frenchy-phil-projet7-essaisite-4w405r.streamlit.app/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
 decodedArrays = json.loads(response_shapley.text)
 
 
@@ -58,4 +58,3 @@ by_label = dict(zip(labels, handles))
 ax.legend(by_label.values(), by_label.keys())
 st.pyplot(fig)
 
-#evidently
