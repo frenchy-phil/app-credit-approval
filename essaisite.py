@@ -10,9 +10,9 @@ from PIL import Image
 import seaborn as sns
 import matplotlib.pyplot as plt 
 
-data=pd.read_csv('X_ressampled.csv')
+data=pd.read_csv('X_ressampled3.csv')
 listid=data['SK_ID_CURR'].tolist()
-valid_x=pd.read_csv('valid_x.csv')
+valid_x=pd.read_csv('valid_x2.csv')
 
 def score(id):
     response = requests.post('http://localhost:6000/predict', json={'text': id})
@@ -57,3 +57,5 @@ handles, labels = plt.gca().get_legend_handles_labels()
 by_label = dict(zip(labels, handles))
 ax.legend(by_label.values(), by_label.keys())
 st.pyplot(fig)
+
+#evidently
