@@ -1,12 +1,12 @@
 import streamlit as st
-from flask import Flask, request
+from flask import request
 import requests
 import shap
 import streamlit.components.v1 as components
 import pandas as pd
 import json
 import numpy as np
-from PIL import Image
+
 import seaborn as sns
 import matplotlib.pyplot as plt 
 
