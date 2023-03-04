@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 import joblib
 import numpy as np
 import shap
-import sys
 import pickle
 import pandas as pd
 from lightgbm import LGBMClassifier
@@ -43,4 +42,7 @@ def predict():
     x=data.loc[data['SK_ID_CURR'] == id]
     y=model.predict_proba(x, num_iteration=model.best_iteration_)[:, 1]
     return jsonify(y.tolist())
-#
+
+
+if __name__ == '__main__':
+    app.run(port=6000,debug=True)
