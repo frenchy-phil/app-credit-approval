@@ -9,7 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt 
 
-data=pd.read_csv('X_ressampled3.csv')
+data=pd.read_csv('X_resampled3.csv')
 listid=data['SK_ID_CURR'].tolist()
 valid_x=pd.read_csv('valid_x2.csv')
 
