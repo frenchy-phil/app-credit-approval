@@ -16,7 +16,7 @@ valid_x=pd.read_csv('valid_x2.csv')
 endpoint='http://frenchyphil.pythonanywhere.com/'
 
 def score(id):
-    response = requests.post(endpoint+'/api/predict', json={'text': id})
+    response = requests.post(endpoint+'/predict', json={'text': id})
     score = response.json()
     return score
 
@@ -29,7 +29,7 @@ id_input = st.selectbox("Choisissez l'identifiant d'un client", data.SK_ID_CURR)
 result=score(id_input)
 st.metric(label= 'probabilite de remboursement', value=1-result[0])
 
-response_shapley = requests.post(endpoint+'/api/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
+response_shapley = requests.post(endpoint+'/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
 decodedArrays = json.loads(response_shapley.text)
 
 
