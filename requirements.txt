@@ -6,7 +6,7 @@ pandas==1.5.2
 json5==0.9.6
 numpy==1.23.5
 seaborn==0.12.2
-matplotlib=3.6.2
+matplotlib==3.6.2
 pillow==9.3.0
 joblib==1.2.0
 picklemixin==1.0.2
