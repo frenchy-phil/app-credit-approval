@@ -13,7 +13,7 @@ data=pd.read_csv('X_resampled3.csv')
 listid=data['SK_ID_CURR'].tolist()
 valid_x=pd.read_csv('valid_x2.csv')
 
-endpoint='http://127.0.0.1:6001'
+endpoint='http://frenchyphil.pythonanywhere.com/'
 
 def score(id):
     response = requests.post(endpoint+'/api/predict', json={'text': id})
