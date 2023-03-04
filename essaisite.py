@@ -14,8 +14,10 @@ data=pd.read_csv('X_ressampled3.csv')
 listid=data['SK_ID_CURR'].tolist()
 valid_x=pd.read_csv('valid_x2.csv')
 
+endpoint='https://frenchy-phil-projet7-essaisite-g9ndik.streamlit.app'
+
 def score(id):
-    response = requests.post('http://localhost:6000/predict', json={'text': id})
+    response = requests.post(endpoint+'/predict', json={'text': id})
     score = response.json()
     return score
 
@@ -28,7 +30,7 @@ id_input = st.selectbox("Choisissez l'identifiant d'un client", data.SK_ID_CURR)
 result=score(id_input)
 st.metric(label= 'probabilite de remboursement', value=1-result[0])
 
-response_shapley = requests.post('http://localhost:6000/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
+response_shapley = requests.post(endpoint+'/shap', json = data.query(f'SK_ID_CURR == {id_input}').index.values.tolist()[0])
 decodedArrays = json.loads(response_shapley.text)
 
 
