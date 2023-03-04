@@ -3,7 +3,6 @@ Flask
 requests
 shap
 pandas
-json
 numpy
 seaborn
 matplotlib
